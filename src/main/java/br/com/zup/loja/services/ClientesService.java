@@ -2,7 +2,6 @@ package br.com.zup.loja.services;
 
 import br.com.zup.loja.exceptions.CPFRepetidoException;
 import br.com.zup.loja.exceptions.ClienteNaoEncontradoException;
-import br.com.zup.loja.exceptions.ProdutoNaoEncontradoException;
 import br.com.zup.loja.models.Cliente;
 import org.springframework.stereotype.Service;
 
