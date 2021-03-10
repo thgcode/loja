@@ -45,6 +45,6 @@ public class RespostaDeErro {
     }
 
     public static RespostaDeErro criaApartirDeErro(ErroNoSistema erro) {
-        return new RespostaDeErro(erro.getTipoDoErro(), erro.getStatus(), Arrays.asList(new Erro(erro.getMessage(), null)));
+        return new RespostaDeErro(erro.getTipoDoErro(), erro.getStatus(), Arrays.asList(new Erro(null, erro.getMessage())));
     }
 }
