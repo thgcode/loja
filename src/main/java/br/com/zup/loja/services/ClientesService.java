@@ -35,6 +35,10 @@ public class ClientesService {
             }
         }
 
-        throw new ProdutoNaoEncontradoException();
+        throw new ClienteNaoEncontradoException();
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 }
