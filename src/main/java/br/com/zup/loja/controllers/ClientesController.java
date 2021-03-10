@@ -20,7 +20,12 @@ public class ClientesController {
     }
 
     @GetMapping
-    public List<Cliente> listarTodosOsclientes() {
+    public List<Cliente> listarTodosOsClientes() {
         return clientesService.getClientes();
+    }
+
+    @GetMapping("{cpf}/")
+    public Cliente pesquisarClientePeloCPF(@PathVariable String cpf) {
+        return clientesService.pesquisarClientePeloCPF(cpf);
     }
 }
