@@ -2,6 +2,7 @@ package br.com.zup.loja.dto;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -12,7 +13,7 @@ public class ComprasDTO {
     private String cpf;
 
     @NotNull
-    private List<ProdutoDTO> produtos;
+    private List<@Valid ProdutoDTO> produtos;
 
     public ComprasDTO() {
     }

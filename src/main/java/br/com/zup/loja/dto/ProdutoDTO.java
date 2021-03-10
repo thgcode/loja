@@ -2,7 +2,10 @@ package br.com.zup.loja.dto;
 
 import br.com.zup.loja.models.Produto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ProdutoDTO {
+    @NotEmpty
     private String nome;
 
     public ProdutoDTO() {

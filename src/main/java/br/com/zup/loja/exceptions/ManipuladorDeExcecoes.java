@@ -39,4 +39,10 @@ public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
         RespostaDeErro resposta = RespostaDeErro.criaApartirDeErro(erro);
         return ResponseEntity.status(resposta.getStatusDeErro()).body(resposta);
     }
+
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        System.out.println(ex.getMessage());
+        return super.handleExceptionInternal(ex, body, headers, status, request);
+    }
 }

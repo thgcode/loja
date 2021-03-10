@@ -5,6 +5,7 @@ import br.com.zup.loja.dto.ProdutoDTO;
 import br.com.zup.loja.models.Compra;
 import br.com.zup.loja.services.ComprasService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,12 +19,13 @@ public class ComprasController {
     private ComprasService comprasService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ComprasDTO adicionarCompra(@Valid @RequestBody ComprasDTO compras) {
         ComprasDTO resultado = new ComprasDTO();
         resultado.setCpf(compras.getCpf());
         resultado.setProdutos(new ArrayList<ProdutoDTO>());
 
-        for (ProdutoDTO produto : compras.getProdutos()) {
+        for (ProdutoDTO produto: compras.getProdutos()) {
             Compra compra = comprasService.adicionarCompra(compras.getCpf(), produto.getNome());
             resultado.getProdutos().add(new ProdutoDTO(produto.getNome()));
         }
@@ -38,6 +40,6 @@ public class ComprasController {
 
     @GetMapping("{cpf}/")
     public List <Compra> listarComprasDoCliente(@PathVariable String cpf) {
-return comprasService.listarComprasDoCliente(cpf);
+        return comprasService.listarComprasDoCliente(cpf);
     }
-    }
+}

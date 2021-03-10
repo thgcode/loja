@@ -1,5 +1,6 @@
 package br.com.zup.loja.services;
 
+import br.com.zup.loja.exceptions.ProdutoEmFaltaException;
 import br.com.zup.loja.models.Cliente;
 import br.com.zup.loja.models.Compra;
 import br.com.zup.loja.models.Produto;
@@ -28,8 +29,13 @@ public class ComprasService {
         Cliente cliente = clientesService.pesquisarClientePeloCPF(cpfDoCliente);
         Produto produto = produtosService.pesquisarProdutoPeloNome(nomeDoProduto);
 
+        if (produto.getQuantidade() <= 0) {
+            throw new ProdutoEmFaltaException(produto.getNome());
+        }
+
         Compra compra = new Compra(cliente, Arrays.asList(produto));
         compras.add(compra);
+        produto.setQuantidade(produto.getQuantidade() - 1);
         return compra;
     }
 
