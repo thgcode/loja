@@ -36,4 +36,8 @@ public class ProdutosService {
 
         throw new ProdutoNaoEncontradoException();
     }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
 }
