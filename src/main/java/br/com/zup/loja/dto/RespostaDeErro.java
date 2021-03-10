@@ -1,7 +1,9 @@
 package br.com.zup.loja.dto;
 
+import br.com.zup.loja.exceptions.ErroNoSistema;
 import org.springframework.http.HttpStatus;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RespostaDeErro {
@@ -40,5 +42,9 @@ public class RespostaDeErro {
 
     public void setErros(List<Erro> erros) {
         this.erros = erros;
+    }
+
+    public static RespostaDeErro criaApartirDeErro(ErroNoSistema erro) {
+        return new RespostaDeErro(erro.getTipoDoErro(), erro.getStatus(), Arrays.asList(new Erro(erro.getMessage(), null)));
     }
 }
