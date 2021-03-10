@@ -3,6 +3,7 @@ package br.com.zup.loja.controllers;
 import br.com.zup.loja.models.Cliente;
 import br.com.zup.loja.services.ClientesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ public class ClientesController {
     private ClientesService clientesService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Cliente adicionarCliente(@RequestBody @Valid Cliente cliente) {
         return clientesService.adicionarCliente(cliente);
     }
