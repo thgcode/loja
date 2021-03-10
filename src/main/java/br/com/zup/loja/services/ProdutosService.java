@@ -26,4 +26,14 @@ public class ProdutosService {
 
         throw new ProdutoRepetidoException();
     }
+
+    public Produto pesquisarProduto(String nomeDoProduto) {
+        for (Produto produto: produtos) {
+            if (produto.getNome().equalsIgnoreCase(nomeDoProduto)) {
+                return produto;
+            }
+        }
+
+        throw new ProdutoNaoEncontradoException();
+    }
 }
