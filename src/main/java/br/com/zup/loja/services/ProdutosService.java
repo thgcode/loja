@@ -18,7 +18,7 @@ public class ProdutosService {
 
     public Produto adicionarProduto(Produto produto) {
         try {
-            pesquisarProduto(produto.getNome());
+            pesquisarProdutoPeloNome(produto.getNome());
         } catch (ProdutoNaoEncontradoException erro) {
             produtos.add(produto);
             return produto;
@@ -27,7 +27,7 @@ public class ProdutosService {
         throw new ProdutoRepetidoException();
     }
 
-    public Produto pesquisarProduto(String nomeDoProduto) {
+    public Produto pesquisarProdutoPeloNome(String nomeDoProduto) {
         for (Produto produto: produtos) {
             if (produto.getNome().equalsIgnoreCase(nomeDoProduto)) {
                 return produto;
