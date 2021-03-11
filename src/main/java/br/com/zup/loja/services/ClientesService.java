@@ -17,6 +17,11 @@ public class ClientesService {
         clientes = new ArrayList<>();
     }
 
+    /**
+     *Verifica se o cliente pode ser adicionado na lista. Se esse método passar pelo fluxo normal do programa, significa que o cliente pode ser adicionado no sistema
+     *
+     * @param cliente o cliente a verificar
+     */
     public void validarAdicionarCliente(Cliente cliente) {
         try {
             pesquisarClientePeloCPF(cliente.getCpf());
@@ -26,6 +31,12 @@ public class ClientesService {
         }
     }
 
+    /**
+     * Adiciona um cliente no sistema
+     *
+     * @param cliente o cliente a ser adicionado
+     * @return cliente
+     */
     public Cliente adicionarCliente(Cliente cliente) {
         try {
             validarAdicionarCliente(cliente);
@@ -37,6 +48,12 @@ public class ClientesService {
         throw new EmailRepetidoException();
     }
 
+    /**
+     * Pesquisa um cliente pelo CPF
+     *
+     * @param cpfDoCliente string contendo o CPF
+     * @return cliente
+     */
     public Cliente pesquisarClientePeloCPF(String cpfDoCliente) {
         for (Cliente cliente: clientes) {
             if (cliente.getCpf().equals(cpfDoCliente)) {
@@ -47,6 +64,12 @@ public class ClientesService {
         throw new ClienteNaoEncontradoException();
     }
 
+    /**
+     * Pesquisa um cliente pelo e-mail
+     *
+     * @param emailDoCliente string contendo o e-mail
+     * @return cliente
+     */
     public Cliente pesquisarClientePeloEmail(String emailDoCliente) {
         for (Cliente cliente: clientes) {
             if (cliente.getEmail().equalsIgnoreCase(emailDoCliente)) {
@@ -57,6 +80,11 @@ public class ClientesService {
         throw new ClienteNaoEncontradoException();
     }
 
+    /**
+     * Lista todos os clientes cadastrados no sistema
+     *
+     * @return lista de clientes
+     */
     public List<Cliente> getClientes() {
         return clientes;
     }
