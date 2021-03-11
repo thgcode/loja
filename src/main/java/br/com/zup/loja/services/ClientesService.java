@@ -22,7 +22,7 @@ public class ClientesService {
      *
      * @param cliente o cliente a verificar
      */
-    public void validarAdicionarCliente(Cliente cliente) {
+    private void validarAdicionarCliente(Cliente cliente) {
         try {
             pesquisarClientePeloCPF(cliente.getCpf());
             throw new CPFRepetidoException();
