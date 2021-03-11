@@ -25,6 +25,13 @@ public class ComprasService {
         compras = new ArrayList<>();
     }
 
+    /**
+     * Adiciona uma compra no sistema
+     *
+     * @param cpfDoCliente string contendo o CPF do cliente que vai fazer a compra
+     * @param nomeDoProduto string contendo o nome do produto comprado
+     * @return objeto compra
+     */
     public Compra adicionarCompra(String cpfDoCliente, String nomeDoProduto) {
         Cliente cliente = clientesService.pesquisarClientePeloCPF(cpfDoCliente);
         Produto produto = produtosService.pesquisarProdutoPeloNome(nomeDoProduto);
@@ -39,10 +46,20 @@ public class ComprasService {
         return compra;
     }
 
+    /**
+     * Retorna a lista de todas as compras cadastradas no sistema
+     *
+     * @return lista de compras
+     */
     public List<Compra> getCompras() {
         return compras;
     }
 
+    /**
+     * Lista as compras de um cliente específico
+     * @param cpfDoCliente string contendo o CPF do cliente para criar a lista
+     * @return lista de compras
+     */
     public List<Compra> listarComprasDoCliente(String cpfDoCliente) {
         List <Compra> listaDeComprasDoCliente = new ArrayList<>();
 

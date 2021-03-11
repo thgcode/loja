@@ -16,6 +16,12 @@ public class ProdutosService {
         produtos = new ArrayList<>();
     }
 
+    /**
+     * Adiciona um produto no sistema
+     *
+     * @param produto o produto a ser adicionado
+     * @return produto
+     */
     public Produto adicionarProduto(Produto produto) {
         try {
             pesquisarProdutoPeloNome(produto.getNome());
@@ -27,6 +33,12 @@ public class ProdutosService {
         throw new ProdutoRepetidoException();
     }
 
+    /**
+     * Pesquisa um produto pelo nome cadastrado
+     *
+     * @param nomeDoProduto string com o nome do produto
+     * @return produto
+     */
     public Produto pesquisarProdutoPeloNome(String nomeDoProduto) {
         for (Produto produto: produtos) {
             if (produto.getNome().equalsIgnoreCase(nomeDoProduto)) {
@@ -37,6 +49,11 @@ public class ProdutosService {
         throw new ProdutoNaoEncontradoException();
     }
 
+    /**
+     * Lista todos os produtos cadastrados no sistema
+     *
+     * @return lista de produtos
+     */
     public List<Produto> getProdutos() {
         return produtos;
     }
